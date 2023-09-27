@@ -1,9 +1,9 @@
 <script setup>
-
+import AuthStore from '@/store/AuthStore'
 </script>
 
 <template>
-  <h1>Witaj, {{userID}}</h1>
+  <h1>Witaj, {{ AuthStore.username.value}}</h1>
   <p class="alert">123</p>
   <input type="text" placeholder="Wpisz stare hasło" name="" id="passwprd" required>
   <input type="text" placeholder="Wpisz nowe hasło" name="" id="newpassword" required>

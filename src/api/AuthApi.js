@@ -5,16 +5,17 @@ const get = () => {
         .then(res => res.data)
 }
 
-const register = (password, username, repeatPassword) => {
-    return api.post("/auth/register", {
+const register = (email, username, password, is_admin) => {
+    return api.post("/register", {
+        email,
         username,
         password,
-        repeatPassword
+        is_admin
     }).then(res => res.data)
 }
 
 const login = (username, password) => {
-    return api.post("/auth/login", {
+    return api.post("/login", {
         username,
         password
     }).then(res => res.data);

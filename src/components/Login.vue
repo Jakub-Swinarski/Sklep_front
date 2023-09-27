@@ -1,9 +1,25 @@
 <script setup>
+import {ref} from "vue";
+import AuthStore from "@/store/AuthStore";
+import {useRouter} from "vue-router";
 
+const username = ref();
+const password = ref();
+const router = useRouter();
+const alertMessage = ref();
+const login = () =>{
+  AuthStore.login(username.value,password.value)
+      .then(()=>{
+        router.push('/dashboard');
+      }).catch((error)=>{
+        alertMessage.value = error.response.data.message;
+  })
+}
 </script>
 
 <template>
   <div class="container">
+    <p>{{alertMessage}}</p>
     <label class="bold" for="username">Nazwa użytkownika</label>
     <input v-model="username" type="text" placeholder="Wpisz nazwę użytkownika" name="username" required>
     <label class="bold" for="psw">Hasło</label>

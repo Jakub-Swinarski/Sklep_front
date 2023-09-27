@@ -5,7 +5,7 @@
 <template>
   <h1>Wylogowano!</h1>
   <div class="container signIn">
-    <p><a href="login.html">Powrót do strony głównej</a></p>
+    <p>Powrót do strony głównej</p>
   </div>
 </template>
 
