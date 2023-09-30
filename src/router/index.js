@@ -3,6 +3,8 @@ import Login from "@/components/Login.vue";
 import Register from "@/components/register.vue";
 import Dashboard from "@/components/dashboard.vue";
 import ConfirmRegisterAccepted from "@/components/confirmRegisterAccepted.vue";
+import ResetPasswordEmail from "@/components/resetPasswordEmail.vue";
+import ResetPassword from "@/components/resetPassword.vue";
 
 
 const router = createRouter({
@@ -23,6 +25,14 @@ const router = createRouter({
         {
             path:'/register/accepted',
             component: ConfirmRegisterAccepted
+        },
+        {
+            path:'/reset/email',
+            component: ResetPasswordEmail
+        },
+        {
+            path:'/reset/password/:token/email/:email',
+            component: ResetPassword
         }
     ]
 })

@@ -7,19 +7,19 @@ const username = ref();
 const password = ref();
 const router = useRouter();
 const alertMessage = ref();
-const login = () =>{
-  AuthStore.login(username.value,password.value)
-      .then(()=>{
+const login = () => {
+  AuthStore.login(username.value, password.value)
+      .then(() => {
         router.push('/dashboard');
-      }).catch((error)=>{
-        alertMessage.value = error.response.data.message;
+      }).catch((error) => {
+    alertMessage.value = error.response.data.message;
   })
 }
 </script>
 
 <template>
   <div class="container">
-    <p>{{alertMessage}}</p>
+    <p>{{ alertMessage }}</p>
     <label class="bold" for="username">Nazwa użytkownika</label>
     <input v-model="username" type="text" placeholder="Wpisz nazwę użytkownika" name="username" required>
     <label class="bold" for="psw">Hasło</label>
@@ -28,8 +28,10 @@ const login = () =>{
   </div>
 
   <div class="container2">
-    <div><button type="button" class="cancelBtn">Anuluj</button></div>
-     <span class="psw">Zapomniałeś <a href="#">hasła?</a></span>
+    <div>
+      <button type="button" class="cancelBtn">Anuluj</button>
+    </div>
+    <span class="psw">Zapomniałeś <a @click="router.push('/reset/email')">hasła?</a></span>
   </div>
 </template>
 
@@ -65,18 +67,20 @@ button {
 }
 
 button:hover {
-  opacity:1;
+  opacity: 1;
 }
 
 a {
   color: dodgerblue;
 }
-.container2{
+
+.container2 {
   display: flex;
   flex-direction: column;
   margin-left: 15px;
 }
-.cancelBtn{
+
+.cancelBtn {
   background-color: red;
   text-align: left;
   width: auto;

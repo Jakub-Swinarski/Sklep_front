@@ -1,24 +1,42 @@
 <script setup>
+import {ref} from "vue";
+import UserStore from "@/store/UserStore";
 
+const email = ref();
+const alertMessage = ref()
+const message = ref()
+const reset = () => {
+  UserStore.ResetPasswordEmail(email.value)
+      .then((res) => {
+        message.value = res.status
+      }).catch((error) => {
+        alertMessage.value = error.response.data.message;
+  })
+}
 </script>
 
 <template>
   <h1>Zresetuj hasło</h1>
-  <input type="text" placeholder="Wpisz adres Email" name="email" id="email" required>
-  <button type="submit" class="button">Wyślij</button>
-  </template>
+  <p>{{ alertMessage }}</p>
+  <input v-model="email" type="email" placeholder="Wpisz adres Email" name="email" id="email" required>
+  <button @click="reset" type="submit" class="button">Wyślij</button>
+  <p>{{ message }}</p>
+</template>
 
 <style scoped>
-* {box-sizing: border-box}
-.container {
-  padding: 16px;
+* {
+  box-sizing: border-box
 }
-h1{
+
+
+
+h1 {
   text-align: center;
   color: #3c0aee;
   font-size: 70px;
 }
-input{
+
+input {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -26,7 +44,8 @@ input{
   border: none;
   background: #f1f1f1;
 }
-button{
+
+button {
   background-color: #3c0aee;
   color: white;
   padding: 16px 20px;

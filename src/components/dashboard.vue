@@ -1,21 +1,34 @@
 <script setup>
 import AuthStore from '@/store/AuthStore'
+import {ref} from "vue";
+import UserStore from "@/store/UserStore";
+const old_password = ref();
+const password = ref()
+const r_password = ref()
+const alertMessage = ref()
+const changePassword =() =>{
+  if (password.value === r_password.value && password.value !== undefined) {
+    UserStore.ChangePassword(old_password, password).catch((error)=>{
+      alertMessage.value = error.response.data.message;
+    })
+  }
+  else {
+    alertMessage.value = "Hasła się nie zgadzają"
+  }
+}
 </script>
 
 <template>
   <h1>Witaj, {{ AuthStore.username.value}}</h1>
-  <p class="alert">123</p>
-  <input type="text" placeholder="Wpisz stare hasło" name="" id="passwprd" required>
-  <input type="text" placeholder="Wpisz nowe hasło" name="" id="newpassword" required>
-  <input type="text" placeholder="Powtórz nowe hasło" name="" id="newpassword" required>
-  <button type="submit" class="button">Zatwierdź</button>
+  <p class="alert">{{alertMessage}}</p>
+  <input v-model="old_password" type="text" placeholder="Wpisz stare hasło" name="" id="password" required>
+  <input v-model="password" type="text" placeholder="Wpisz nowe hasło" name="" id="newPassword" required>
+  <input v-model="r_password" type="text" placeholder="Powtórz nowe hasło" name="" id="newPassword" required>
+  <button @click="changePassword" type="submit" class="button">Zatwierdź</button>
 </template>
 
 <style scoped>
 * {box-sizing: border-box}
-.container {
-  padding: 16px;
-}
 h1{
   text-align: left;
   color: #3c0aee;
