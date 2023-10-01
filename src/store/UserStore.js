@@ -9,7 +9,7 @@ const ResetPasswordEmailSendNewPassword = (email, token, password) => {
     return UserApi.ResetPasswordEmailSendNewPassword(email, token, password)
 }
 const ChangePassword = (old_password, new_password) => {
-    return UserApi.ChangePassword(AuthStore.userId, old_password, new_password)
+    return UserApi.ChangePassword(AuthStore.userId.value, old_password, new_password)
 }
 const UserStore = {
     ChangePassword, ResetPasswordEmail, ResetPasswordEmailSendNewPassword

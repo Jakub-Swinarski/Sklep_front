@@ -13,7 +13,7 @@ const ResetPasswordEmailSendNewPassword = (email, token, password) => {
 }
 const ChangePassword = (user_id, old_password, new_password) => {
     return api.put('/changePassword', {
-        user_id, old_password, new_password
+        id: user_id, old_password, new_password
     }).then(res => res.data)
 }
 

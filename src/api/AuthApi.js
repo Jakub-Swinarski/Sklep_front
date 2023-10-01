@@ -1,7 +1,7 @@
 import api from "../api/api";
 
 const get = () => {
-    return api.get("/auth/user")
+    return api.get("/getUser")
         .then(res => res.data)
 }
 

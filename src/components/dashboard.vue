@@ -2,13 +2,18 @@
 import AuthStore from '@/store/AuthStore'
 import {ref} from "vue";
 import UserStore from "@/store/UserStore";
+import ResetConfirmation from "@/components/ResetConfirmation.vue";
+AuthStore.fetchUser();
 const old_password = ref();
 const password = ref()
 const r_password = ref()
 const alertMessage = ref()
+const password_rested = ref(0)
 const changePassword =() =>{
   if (password.value === r_password.value && password.value !== undefined) {
-    UserStore.ChangePassword(old_password, password).catch((error)=>{
+    UserStore.ChangePassword(old_password.value, password.value).then(()=>{
+      password_rested.value = 1
+    }).catch((error)=>{
       alertMessage.value = error.response.data.message;
     })
   }
@@ -21,6 +26,7 @@ const changePassword =() =>{
 <template>
   <h1>Witaj, {{ AuthStore.username.value}}</h1>
   <p class="alert">{{alertMessage}}</p>
+  <ResetConfirmation v-if="password_rested === 1" ></ResetConfirmation>
   <input v-model="old_password" type="text" placeholder="Wpisz stare hasło" name="" id="password" required>
   <input v-model="password" type="text" placeholder="Wpisz nowe hasło" name="" id="newPassword" required>
   <input v-model="r_password" type="text" placeholder="Powtórz nowe hasło" name="" id="newPassword" required>
