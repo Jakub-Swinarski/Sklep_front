@@ -8,7 +8,7 @@ const message = ref()
 const reset = () => {
   UserStore.ResetPasswordEmail(email.value)
       .then((res) => {
-        message.value = res.status
+        message.value = "Email wysłano"
       }).catch((error) => {
         alertMessage.value = error.response.data.message;
   })
