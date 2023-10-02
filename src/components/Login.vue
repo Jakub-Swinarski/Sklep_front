@@ -1,5 +1,11 @@
 <script setup>
+import {ref} from "vue";
 
+const username = ref()
+const password = ref()
+const login = ()=>{
+  AuthStore
+}
 </script>
 
 <template>
