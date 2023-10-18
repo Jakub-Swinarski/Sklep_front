@@ -27,9 +27,9 @@ const changePassword =() =>{
   <h1>Witaj, {{ AuthStore.username.value}}</h1>
   <p class="alert">{{alertMessage}}</p>
   <ResetConfirmation v-if="password_rested === 1" ></ResetConfirmation>
-  <input v-model="old_password" type="text" placeholder="Wpisz stare hasło" name="" id="password" required>
-  <input v-model="password" type="text" placeholder="Wpisz nowe hasło" name="" id="newPassword" required>
-  <input v-model="r_password" type="text" placeholder="Powtórz nowe hasło" name="" id="newPassword" required>
+  <input v-model="old_password" type="password" placeholder="Wpisz stare hasło" name="" id="password" required>
+  <input v-model="password" type="password" placeholder="Wpisz nowe hasło" name="" id="newPassword" required>
+  <input v-model="r_password" type="password" placeholder="Powtórz nowe hasło" name="" id="newPassword" required>
   <button @click="changePassword" type="submit" class="button">Zatwierdź</button>
 </template>
 

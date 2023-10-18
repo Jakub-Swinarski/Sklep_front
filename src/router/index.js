@@ -5,11 +5,16 @@ import Dashboard from "@/components/dashboard.vue";
 import ConfirmRegisterAccepted from "@/components/confirmRegisterAccepted.vue";
 import ResetPasswordEmail from "@/components/resetPasswordEmail.vue";
 import ResetPassword from "@/components/resetPassword.vue";
+import Start from "@/components/start.vue";
 
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
+        {
+            path: '/',
+            component:Start
+        },
         {
             path: '/login',
             component: Login
