@@ -6,11 +6,16 @@ import ConfirmRegisterAccepted from "@/components/confirmRegisterAccepted.vue";
 import ResetPasswordEmail from "@/components/resetPasswordEmail.vue";
 import ResetPassword from "@/components/resetPassword.vue";
 import Start from "@/components/start.vue";
+import Rules from "@/components/rules.vue";
 
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
+        {
+            path:'/test',
+            component: Rules
+        },
         {
             path: '/',
             component:Start
