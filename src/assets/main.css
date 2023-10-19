@@ -2,23 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    background-color: #C0C0C0 ;
 }
 
-.container {
-    padding: 16px;
-}
-
-h1 {
-    text-align: center;
-    color: #3c0aee;
-    font-size: 70px;
-}
-.bold{
-    font-weight: bold;
-}
-
-.signIn {
-    background-color: #f1f1f1;
-    text-align: center;
-}
 

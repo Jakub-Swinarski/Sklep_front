@@ -9,6 +9,7 @@ import Start from "@/components/start.vue";
 import Rules from "@/components/rules.vue";
 
 
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
