@@ -8,6 +8,7 @@ import ResetPassword from "@/components/resetPassword.vue";
 import Start from "@/components/start.vue";
 import Rules from "@/components/rules.vue";
 import AdminPanel from "@/components/adminPanel.vue";
+import allUsers from "@/components/allUsers.vue";
 
 
 
@@ -16,7 +17,7 @@ const router = createRouter({
     routes: [
         {
             path:'/test',
-            component: AdminPanel
+            component: allUsers
         },
         {
             path: '/',

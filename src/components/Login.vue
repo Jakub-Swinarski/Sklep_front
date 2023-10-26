@@ -43,27 +43,32 @@ input[type=text], input[type=password] {
   display: inline-block;
   border: none;
   background: #f1f1f1;
+  font-weight: bold;
 }
 
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
+ font-weight: bold;
   outline: none;
 }
 
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
+  font-weight: bold;
 }
 
 button {
-  background-color: #3c0aee;
-  color: white;
+  background-color: red;
+  font-size: 20px;
+  font-weight: bold;
   padding: 16px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 15%;
   opacity: 0.9;
+  border-radius: 20px;
 }
 
 button:hover {
@@ -82,8 +87,13 @@ a {
 
 .cancelBtn {
   background-color: red;
-  text-align: left;
-  width: auto;
+  text-align: center;
+  width: 8%;
 }
-
+.psw{
+  font-weight: bold;
+}
+.bold{
+  font-weight: bold;
+}
 </style>

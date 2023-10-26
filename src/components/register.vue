@@ -63,6 +63,8 @@ input {
   display: inline-block;
   border: none;
   background: #f1f1f1;
+  font-weight: bold;
+
 }
 
 input:focus {
@@ -73,17 +75,21 @@ input:focus {
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
+  font-weight: bold;
+
 }
 
 .registerBtn {
-  background-color: #3c0aee;
-  color: white;
+  background-color: red;
   padding: 16px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 .registerBtn:hover {
@@ -98,7 +104,9 @@ p {
   font-size: 25px;
 }
 
-h1 {
+.container {
+  font-weight: bold;
 
 }
+
 </style>

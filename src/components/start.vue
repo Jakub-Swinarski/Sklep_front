@@ -10,5 +10,14 @@ const router = useRouter()
 </template>
 
 <style scoped>
+button{
+  background-color: red;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 170px;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 15px;
 
+}
 </style>
