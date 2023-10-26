@@ -16,8 +16,11 @@ const ChangePassword = (user_id, old_password, new_password) => {
         id: user_id, old_password, new_password
     }).then(res => res.data)
 }
+const GetAllUsers = ()=>{
+    return api.get('/user/all').then(res => res.data)
+}
 
 const UserApi = {
-    ResetPasswordEmail, ResetPasswordEmailSendNewPassword, ChangePassword,
+    ResetPasswordEmail, ResetPasswordEmailSendNewPassword, ChangePassword, GetAllUsers
 }
 export default UserApi;
