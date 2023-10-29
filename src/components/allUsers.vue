@@ -5,13 +5,20 @@ import UserStore from "@/store/UserStore";
 </script>
 
 <template>
-  {{UserStore.allUsers.value}}
-  <div class="kafel" >
-    <label class="name" for="username">Nazwa użytkownika</label>
-    <label class="email" for="email">Email</label>
-  </div>
+   <div class="main">
+     <div class="kafel" v-for="(row,row_index) of UserStore.allUsers.value" :key = "row_index">
+      <p class="name">{{row.username}}</p>
+      <p class="email">{{row.email}}</p>
+    </div>
+   </div>
 </template>
 
 <style scoped>
+.main{
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4,25%);
+
+}
 
 </style>
