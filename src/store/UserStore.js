@@ -1,6 +1,6 @@
 import UserApi from "@/api/UserApi";
-
 import AuthStore from "@/store/AuthStore";
+
 import {ref} from "vue";
 const allUsers = ref([])
 
@@ -13,8 +13,8 @@ const ResetPasswordEmailSendNewPassword = (email, token, password) => {
 const ChangePassword = (old_password, new_password) => {
     return UserApi.ChangePassword(AuthStore.userId.value, old_password, new_password)
 }
-const GetAllUsers = async ()=>{
-    return  UserApi.GetAllUsers
+const GetAllUsers = ()=>{
+    return  UserApi.GetAllUsers()
         .then(res => allUsers.value = res)
 }
 const UserStore = {
