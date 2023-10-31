@@ -4,7 +4,10 @@ import "@/assets/main.css"
 </script>
 
 <template>
-  <router-view></router-view>
+  <div class="grid">
+    <router-view></router-view>
+  </div>
+
 </template>
 
 <style scoped>
