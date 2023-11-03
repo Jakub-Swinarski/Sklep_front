@@ -1,12 +1,12 @@
 import api from "../api/api";
 
 const get = () => {
-    return api.get("/getUser")
+    return api.get("/auth/user")
         .then(res => res.data)
 }
 
 const register = (email, username, password, is_admin) => {
-    return api.post("/register", {
+    return api.post("auth/register", {
         email,
         username,
         password,

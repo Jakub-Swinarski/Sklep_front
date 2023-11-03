@@ -5,14 +5,17 @@ const user = ref();
 
 const userId = ref();
 const username = ref();
+const userEmail = ref()
+const isAdmin = ref(false)
 
 watch(user, (val) => {
-    console.log('1')
     if (val !== undefined) {
         userId.value = val.id;
         username.value = val.username;
+        userEmail.value = val.email
+        isAdmin.value = val.is_admin;
     }
-}, { deep: true });
+}, {deep: true});
 
 const token = ref();
 
@@ -62,6 +65,17 @@ const deleteUser = (password) => {
         })
 }
 
-const AuthStore = {userId, username, login, fetchUser, register, logout, token: tokenGetter, deleteUser};
+const AuthStore = {
+    userEmail,
+    userId,
+    username,
+    isAdmin,
+    login,
+    fetchUser,
+    register,
+    logout,
+    token: tokenGetter,
+    deleteUser
+};
 
 export default AuthStore;

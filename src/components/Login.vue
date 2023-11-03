@@ -7,93 +7,43 @@ const username = ref();
 const password = ref();
 const router = useRouter();
 const alertMessage = ref();
+const isVisible = ref(false)
+const isLoading = ref(false)
 const login = () => {
+  isLoading.value = true
   AuthStore.login(username.value, password.value)
       .then(() => {
         router.push('/dashboard');
       }).catch((error) => {
+    isLoading.value = false
     alertMessage.value = error.response.data.message;
+    isVisible.value = true
   })
 }
 </script>
 
 <template>
-  <div class="container">
-    <p>{{ alertMessage }}</p>
-    <label class="bold" for="username">Nazwa użytkownika</label>
-    <input v-model="username" type="text" placeholder="Wpisz nazwę użytkownika" name="username" required>
-    <label class="bold" for="psw">Hasło</label>
-    <input v-model="password" type="password" placeholder="Wpisz hasło" name="psw" required>
-    <button @click="login" type="submit">Zaloguj</button>
+  <div
+      class="container gap-6 flex flex-col justify-self-center self-center justify-center items-center  text-2xl py-8 min-h-screen">
+    <p class="text-3xl">LOGOWANIE</p>
+    <p v-if="isVisible" class="text-5xl text-red-700 bg-red-200 px-8 py-4 rounded-xl border-2 border-red-700">
+      {{ alertMessage }}</p>
+    <p>Nazwa użytkownika</p>
+    <input class="min-w-full bg-gray-100 p-2 rounded-full text-center" v-model="username" type="text"
+           placeholder="Wpisz nazwę użytkownika" name="username" required>
+    <p>Hasło</p>
+    <input class="min-w-full bg-gray-100 p-2 rounded-full text-center" v-model="password" type="password"
+           placeholder="Wpisz hasło"
+           name="psw" required>
+    <button class="bg-blue-500 px-4 py-2 rounded-full" v-if="!isLoading" @click="login">Zaloguj</button>
+    <img v-if="isLoading" src="../assets/loader.gif">
+    <p>Zapomniałeś <a class="text-blue-500" @click="router.push('/reset/email')">hasła?</a></p>
+    <p>Nie masz konta. <a class="text-blue-500" @click="router.push('/register')">Zarejestruj się</a></p>
   </div>
 
-  <div class="container2">
-    <div>
-      <button type="button" class="cancelBtn">Anuluj</button>
-    </div>
-    <span class="psw">Zapomniałeś <a @click="router.push('/reset/email')">hasła?</a></span>
-  </div>
+
 </template>
 
 <style scoped>
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-  font-weight: bold;
-}
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
- font-weight: bold;
-  outline: none;
-}
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-  font-weight: bold;
-}
-
-button {
-  background-color: red;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 15%;
-  opacity: 0.9;
-  border-radius: 20px;
-}
-
-button:hover {
-  opacity: 1;
-}
-
-a {
-  color: dodgerblue;
-}
-
-.container2 {
-  display: flex;
-  flex-direction: column;
-  margin-left: 15px;
-}
-
-.cancelBtn {
-  background-color: red;
-  text-align: center;
-  width: 8%;
-}
-.psw{
-  font-weight: bold;
-}
-.bold{
-  font-weight: bold;
-}
 </style>

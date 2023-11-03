@@ -5,10 +5,11 @@ const router = useRouter()
 </script>
 
 <template>
-  <h1>Potwierdzenie mailem udane</h1>
-  <div class="container signIn">
-    <p @click="router.push('/login')"> Powrót do logowania</p>
+  <div class="container gap-6 flex flex-col justify-self-center self-center justify-center items-center  text-2xl py-8">
+    <p>Potwierdzenie mailem udane</p>
+    <p class="text-blue-500" @click="router.push('/login')"> Powrót do logowania</p>
   </div>
+
 </template>
 
 <style scoped>

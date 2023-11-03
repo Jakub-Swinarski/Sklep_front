@@ -11,102 +11,67 @@ const r_password = ref();
 const is_admin = false;
 const alertMessage = ref();
 const isRegistered = ref();
+const isVisible = ref(false)
+const isLoading = ref(false)
+
+const buttonClick = () => {
+  isVisible.value = false
+  register()
+}
+
 const register = () => {
   if (password.value === r_password.value && password.value !== undefined) {
+    isLoading.value = true
     AuthStore.register(email.value, username.value, password.value, is_admin)
         .then(() => {
           isRegistered.value = true
         })
         .catch((error) => {
+          isLoading.value = false
           alertMessage.value = error.response.data.message;
+          isVisible.value = true
         })
   } else {
     alertMessage.value = "Hasła się nie zgadzają lub pole hasło jest puste"
+    isVisible.value = true
   }
+
 
 }
 </script>
 
 <template>
-  <div class="container">
-    <h1>Zarejestruj się</h1>
-    <p>Wypełnij formularz w celu utworzenia konta.</p>
-    <hr>
-    <p>{{ alertMessage }}</p>
-    <label class="bold" for="username">Nazwa użytkownika</label>
-    <input v-model="username" type="text" name="username" id="username" placeholder="Wpisz nazwę użytkownika">
-    <label class="bold" for="email">Email</label>
-    <input v-model="email" type="email" placeholder="Wpisz adres Email" name="email" id="email" required>
+  <div
+      class="container gap-6 flex flex-col justify-self-center self-center justify-center items-center  text-2xl py-8 min-h-screen">
+    <p class="text-3xl">Zarejestruj się</p>
+    <p class="text-xl">Wypełnij formularz w celu utworzenia konta.</p>
+    <p v-if="isVisible" class="text-5xl text-red-700 bg-red-200 px-8 py-4 rounded-xl border-2 border-red-700">
+      {{ alertMessage }}</p>
+    <label for="username">Nazwa użytkownika</label>
+    <input class="min-w-full bg-gray-100 p-2 rounded-full text-center" v-model="username" type="text" name="username"
+           id="username" placeholder="Wpisz nazwę użytkownika">
+    <label for="email">Email</label>
+    <input class="min-w-full bg-gray-100 p-2 rounded-full text-center" v-model="email" type="email"
+           placeholder="Wpisz adres Email" name="email" id="email" required>
 
-    <label class="bold" for="psw">Hasło</label>
-    <input v-model="password" type="password" placeholder="Wpisz hasło" name="psw" id="psw" required>
+    <label for="psw">Hasło</label>
+    <input class="min-w-full bg-gray-100 p-2 rounded-full text-center" v-model="password" type="password"
+           placeholder="Wpisz hasło" name="psw" id="psw" required>
 
-    <label class="bold" for="psw-repeat">Powtórz hasło</label>
-    <input v-model="r_password" type="password" placeholder="Wpisz hasło" name="psw-repeat" id="psw-repeat" required>
-    <hr>
+    <label for="psw-repeat">Powtórz hasło</label>
+    <input class="min-w-full bg-gray-100 p-2 rounded-full text-center" v-model="r_password" type="password"
+           placeholder="Wpisz hasło" name="psw-repeat" id="psw-repeat" required>
 
-    <p>Tworząc konto zgadasz się na nasz regulamin dostępny tu: <a href="rules.html">Zasady tworzenia konta</a>.</p>
-    <button @click="register" type="submit" class="registerBtn">Zarejestruj się!</button>
+    <p>Tworząc konto zgadasz się na nasz regulamin dostępny tu: <a class="text-blue-500" @click="router.push('/rules')">Zasady
+      tworzenia
+      konta</a>.</p>
+    <button class="bg-blue-500 px-4 py-2 rounded-full" v-if="!isLoading" @click="buttonClick">Zarejestruj się!</button>
+    <img v-if="isLoading" src="@/assets/loader.gif">
     <h2 v-if="isRegistered === true">Potwierdź rejestracje. Potwierdzenie znajduje się na mailu</h2>
-  </div>
-
-  <div class="container signIn">
-    <p>Masz już konto? <a @click="router.push('/login')">Zaloguj się</a>.</p>
+    <p>Masz już konto? <a class="text-blue-500" @click="router.push('/login')">Zaloguj się</a>.</p>
   </div>
 </template>
 
 <style scoped>
-input {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-  font-weight: bold;
-
-}
-
-input:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-  font-weight: bold;
-
-}
-
-.registerBtn {
-  background-color: red;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.registerBtn:hover {
-  opacity: 1;
-}
-
-a {
-  color: dodgerblue;
-}
-
-p {
-  font-size: 25px;
-}
-
-.container {
-  font-weight: bold;
-
-}
 
 </style>

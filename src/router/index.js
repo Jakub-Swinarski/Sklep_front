@@ -1,27 +1,26 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Login from "@/components/Login.vue";
 import Register from "@/components/register.vue";
-import Dashboard from "@/components/dashboard.vue";
+import Dashboard from "@/components/AccountSettings.vue";
 import ConfirmRegisterAccepted from "@/components/confirmRegisterAccepted.vue";
 import ResetPasswordEmail from "@/components/resetPasswordEmail.vue";
 import ResetPassword from "@/components/resetPassword.vue";
 import Start from "@/components/start.vue";
-import Rules from "@/components/rules.vue";
-import AdminPanel from "@/components/adminPanel.vue";
+import AdminPanel from "@/components/SetingsPanel.vue";
 import allUsers from "@/components/allUsers.vue";
-
+import SideSetingsPanel from "@/components/SetingsPanel.vue";
 
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path:'/test',
-            component: allUsers
+            path: '/test',
+            component: SideSetingsPanel
         },
         {
             path: '/',
-            component:Start
+            component: Start
         },
         {
             path: '/login',
@@ -33,22 +32,22 @@ const router = createRouter({
         },
         {
             path: '/dashboard',
-            component : Dashboard
+            component: Dashboard
         },
         {
-            path:'/register/accepted',
+            path: '/register/accepted',
             component: ConfirmRegisterAccepted
         },
         {
-            path:'/reset/email',
+            path: '/reset/email',
             component: ResetPasswordEmail
         },
         {
-            path:'/reset/password/:token/email/:email',
+            path: '/reset/password/:token/email/:email',
             component: ResetPassword
         },
         {
-            path:'/adminPanel',
+            path: '/adminPanel',
             component: AdminPanel
         },
     ]
