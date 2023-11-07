@@ -1,14 +1,14 @@
 <script setup>
 import {ref} from "vue";
-import AllUsers from "@/components/allUsers.vue";
-import AllOrders from "@/components/allOrders.vue";
-import AllProducts from "@/components/allProducts.vue";
+import AllUsers from "@/components/admin/allUsers.vue";
+import AllOrders from "@/components/admin/allOrders.vue";
+import AllProducts from "@/components/admin/allProducts.vue";
 import AuthStore from "../store/AuthStore";
-import CreateNewSide from "@/components/CreateNewSide.vue";
-import AccountSettings from "@/components/AccountSettings.vue";
-import YourOrders from "@/components/YourOrders.vue";
-import YourRatings from "@/components/YourRatings.vue";
-import YourDeliveryData from "@/components/YourDeliveryData.vue";
+import CreateNewSide from "@/components/admin/CreateNewSide.vue";
+import AccountSettings from "@/components/user/AccountSettings.vue";
+import YourOrders from "@/components/user/YourOrders.vue";
+import YourRatings from "@/components/user/YourRatings.vue";
+import YourDeliveryData from "@/components/user/YourDeliveryData.vue";
 const isLoading = ref(true)
 const alertMessage = ref()
 const notLoaded = ref()
@@ -32,7 +32,7 @@ AuthStore.fetchUser().then((res) => {
     <p class="m-6 text-center text-5xl text-red-700 bg-red-200 px-8 py-4 rounded-xl border-2 border-red-700">
       {{ alertMessage }}</p>
   </div>
-  <div class="flex container max-w-5xl w-full flex-row justify-self-center justify-items-start" v-if="!isLoading && !notLoaded">
+  <div class="flex container gap-6 max-w-5xl w-full flex-row justify-self-center justify-items-start" v-if="!isLoading && !notLoaded">
     <div class="pt-20 flex text-2xl flex-col gap-12 w-full max-w-xs">
       <p class="text-xl">Cześć, {{ AuthStore.username.value }}</p>
       <div class="flex flex-col">
@@ -52,7 +52,7 @@ AuthStore.fetchUser().then((res) => {
       </div>
 
 
-      <div class="flex flex-col">
+      <div class="flex flex-col" v-if="AuthStore.isAdmin.value">
         <p class="text-3xl">Ustawienia administratora</p>
         <button class="py-3 text-start w-full hover:bg-gray-100" @click="whichPanel = 10">
           wszyscy użytkownicy

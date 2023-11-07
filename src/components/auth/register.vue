@@ -66,7 +66,7 @@ const register = () => {
       tworzenia
       konta</a>.</p>
     <button class="bg-blue-500 px-4 py-2 rounded-full" v-if="!isLoading" @click="buttonClick">Zarejestruj się!</button>
-    <img v-if="isLoading" src="@/assets/loader.gif">
+    <img v-if="isLoading" src="../../assets/loader.gif">
     <h2 v-if="isRegistered === true">Potwierdź rejestracje. Potwierdzenie znajduje się na mailu</h2>
     <p>Masz już konto? <a class="text-blue-500" @click="router.push('/login')">Zaloguj się</a>.</p>
   </div>

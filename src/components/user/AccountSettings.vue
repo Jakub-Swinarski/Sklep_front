@@ -2,7 +2,6 @@
 import AuthStore from '@/store/AuthStore'
 import {ref} from "vue";
 import UserStore from "@/store/UserStore";
-import ResetConfirmation from "@/components/ResetConfirmation.vue";
 
 const newUsername = ref();
 const old_password = ref();
@@ -70,7 +69,7 @@ const changePassword = () => {
 
 <template>
   <div class="justify-self-center self-center max-h-screen" v-if="isLoading">
-    <img alt="loading..." src="@/assets/loader.gif">
+    <img alt="loading..." src="../../assets/loader.gif">
   </div>
   <div v-if="notLoaded === true">
     <p class="m-6 text-center text-5xl text-red-700 bg-red-200 px-8 py-4 rounded-xl border-2 border-red-700">

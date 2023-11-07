@@ -13,7 +13,7 @@ const ResetPasswordEmailSendNewPassword = (email, token, password) => {
 }
 const ChangePassword = (user_id, old_password, new_password) => {
     return api.put('/user/password', {
-        id: user_id, old_password, new_password
+        user_id, old_password, new_password
     }).then(res => res.data)
 }
 const GetAllUsers = () => {
@@ -21,15 +21,12 @@ const GetAllUsers = () => {
 }
 const ChangeUsername = (newUsername, userId) => {
     return api.put('/user/username', {
-        username: newUsername,
-        user_id: userId,
+        username: newUsername, user_id: userId,
     }).then(res => res.data)
 }
 const ChangeEmail = (email, password, user_id) => {
     return api.put('/user/email', {
-        email,
-        password,
-        user_id,
+        email, password, user_id,
     }).then(res => res.data)
 }
 const DeleteUser = (id) => {

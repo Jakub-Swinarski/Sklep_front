@@ -1,22 +1,26 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import Login from "@/components/Login.vue";
-import Register from "@/components/register.vue";
-import Dashboard from "@/components/AccountSettings.vue";
-import ConfirmRegisterAccepted from "@/components/confirmRegisterAccepted.vue";
-import ResetPasswordEmail from "@/components/resetPasswordEmail.vue";
-import ResetPassword from "@/components/resetPassword.vue";
+import Login from "@/components/auth/Login.vue";
+import Register from "@/components/auth/register.vue";
+import Dashboard from "@/components/user/AccountSettings.vue";
+import ConfirmRegisterAccepted from "@/components/auth/confirmRegisterAccepted.vue";
+import ResetPasswordEmail from "@/components/auth/resetPasswordEmail.vue";
+import ResetPassword from "@/components/auth/resetPassword.vue";
 import Start from "@/components/start.vue";
-import AdminPanel from "@/components/SetingsPanel.vue";
-import allUsers from "@/components/allUsers.vue";
-import SideSetingsPanel from "@/components/SetingsPanel.vue";
+import AdminPanel from "@/components/SettingsPanel.vue";
+import SideSettingsPanel from "@/components/SettingsPanel.vue";
+import EditProduct from "@/components/admin/EditProduct.vue";
 
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
+            path:'/edit/product/:id',
+            component: EditProduct
+        },
+        {
             path: '/test',
-            component: SideSetingsPanel
+            component: SideSettingsPanel
         },
         {
             path: '/',

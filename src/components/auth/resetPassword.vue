@@ -44,7 +44,7 @@ const editPassword = () => {
     <input class="min-w-full bg-gray-100 p-2 rounded-full text-center" v-model="r_password" type="password"
            name="r_password" id="r_password">
     <button class="bg-blue-500 px-4 py-2 rounded-full" v-if="!isLoading" @click="editPassword">Zapisz</button>
-    <img v-if="isLoading" src="@/assets/loader.gif">
+    <img v-if="isLoading" src="../../assets/loader.gif">
   </div>
 
 </template>

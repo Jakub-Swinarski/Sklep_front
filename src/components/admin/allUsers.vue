@@ -30,26 +30,26 @@ UserStore.GetAllUsers().then((res) => {
   }
 })
 const changeUsername = (id) => {
-  isVisible.value = false
+  isError.value = false
   UserStore.ChangeUsername(newUsername.value, id).then((res) => {
     user_panel.value = false
     newUsername.value = null
     UserStore.GetAllUsers()
   }).catch((error) => {
-    isVisible.value = true
+    isError.value = true
     alertMessage.value = error.response.data.message;
     if (alertMessage.value === "The username has already been taken.") alertMessage.value = "Nazwa użytkownika jest już zajęta."
   })
 }
 const changeEmail = (id) => {
-  isVisible.value = false
+  isError.value = false
   UserStore.ChangeEmail(email.value, password.value, id).then((res) => {
     email_panel.value = false
     email.value = null
     password.value = null
     UserStore.GetAllUsers()
   }).catch((e) => {
-    isVisible.value = true
+    isError.value = true
     alertMessage.value = e.response.data.message;
     if (alertMessage.value === "The username has already been taken.") alertMessage.value = "Nazwa użytkownika jest już zajęta."
   })
@@ -59,25 +59,31 @@ const changePassword = (id) => {
     isVisible.value = true
     alertMessage.value = 'Nowe hasło się nie powtarza'
   } else {
-    isVisible.value = false
+    isError.value = false
     UserStore.ChangePassword(id, old_password.value, password.value).then((res) => {
       password_panel.value = false
       old_password.value = null
       password.value = null
       r_password.value = null
     }).catch((e) => {
-      isVisible.value = true
+      isError.value = true
       alertMessage.value = e.response.data.message;
     })
   }
 }
-
+const deleteUser = (id) =>{
+  UserStore.DeleteUser(id).then(()=>{
+    UserStore.GetAllUsers().then(()=>{
+      isVisible.value = 0
+    })
+  })
+}
 </script>
 
 <template>
   <div>
     <div class="flex justify-self-center justify-center items-center self-center max-h-screen" v-if="isLoading">
-      <img alt="loading..." src="@/assets/loader.gif">
+      <img alt="loading..." src="../../assets/loader.gif">
     </div>
   </div>
   <div v-if="notLoaded === true">
@@ -161,7 +167,7 @@ const changePassword = (id) => {
            v-if="isVisible === 'Delete-'+row.id">
         <p>Czy chcesz usunąć użytkownika: {{ row.username }}</p>
         <div class="flex flex-row gap-6">
-          <button class="py-2 px-4 bg-blue-500 rounded-full">Tak</button>
+          <button class="py-2 px-4 bg-blue-500 rounded-full" @click="deleteUser(row.id)">Tak</button>
           <button class="py-2 px-4 bg-blue-500 rounded-full" @click="isVisible = 0">Anuluj</button>
         </div>
 

@@ -30,7 +30,7 @@ const reset = () => {
     <input class="min-w-full bg-gray-100 p-2 rounded-full text-center" v-model="email" type="email"
            placeholder="Wpisz adres Email" name="email" id="email" required>
     <button class="bg-blue-500 px-4 py-2 rounded-full" v-if="!isLoading" @click="reset">Zresetuj</button>
-    <img v-if="isLoading" src="@/assets/loader.gif">
+    <img v-if="isLoading" src="../../assets/loader.gif">
     <p>{{ message }}</p>
   </div>
 

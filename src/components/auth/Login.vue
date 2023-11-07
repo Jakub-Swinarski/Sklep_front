@@ -36,7 +36,7 @@ const login = () => {
            placeholder="Wpisz hasło"
            name="psw" required>
     <button class="bg-blue-500 px-4 py-2 rounded-full" v-if="!isLoading" @click="login">Zaloguj</button>
-    <img v-if="isLoading" src="../assets/loader.gif">
+    <img v-if="isLoading" src="../../assets/loader.gif">
     <p>Zapomniałeś <a class="text-blue-500" @click="router.push('/reset/email')">hasła?</a></p>
     <p>Nie masz konta. <a class="text-blue-500" @click="router.push('/register')">Zarejestruj się</a></p>
     <div
@@ -52,7 +52,7 @@ const login = () => {
              placeholder="Wpisz hasło"
              name="psw" required>
       <button class="bg-blue-500 px-4 py-2 rounded-full" v-if="!isLoading" @click="login">Zaloguj</button>
-      <img v-if="isLoading" src="../assets/loader.gif">
+      <img v-if="isLoading" src="../../assets/loader.gif">
       <p>Zapomniałeś <a class="text-blue-500" @click="router.push('/reset/email')">hasła?</a></p>
       <p>Nie masz konta. <a class="text-blue-500" @click="router.push('/register')">Zarejestruj się</a></p>
     </div>
