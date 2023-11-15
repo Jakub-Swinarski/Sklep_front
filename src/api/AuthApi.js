@@ -15,7 +15,7 @@ const register = (email, username, password, is_admin) => {
 }
 
 const login = (username, password) => {
-    return api.post("/login", {
+    return api.post("/auth/login", {
         username,
         password
     }).then(res => res.data);
