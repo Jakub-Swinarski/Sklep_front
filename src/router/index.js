@@ -18,6 +18,7 @@ import CreateNewSide from "@/components/admin/CreateNewSide.vue";
 import CreateNewUser from "@/components/admin/CreateNewUser.vue";
 import CreateNewAdmin from "@/components/admin/CreateNewAdmin.vue";
 import EditOrder from "@/components/admin/EditOrder.vue";
+import CreateNewProduct from "@/components/admin/createNewProduct.vue";
 
 
 const router = createRouter({
@@ -75,6 +76,10 @@ const router = createRouter({
                 {
                     path: ':id',
                     component:EditOrder
+                },
+                {
+                    path: 'newProduct',
+                    component: CreateNewProduct
                 }
             ]
         },

@@ -58,13 +58,16 @@ AuthStore.fetchUser().then((res) => {
       <div class="flex flex-col" v-if="AuthStore.isAdmin.value">
         <p class="text-3xl">Ustawienia administratora</p>
         <button class="py-3 text-start w-full hover:bg-gray-100" @click="router.push('/settings/allUsers')">
-          wszyscy użytkownicy
+          Wszyscy użytkownicy
         </button>
         <button class="py-3 text-start hover:bg-gray-100" @click="router.push('/settings/allOrders')">
-          wszystkie zamówienia
+          Wszystkie zamówienia
         </button>
         <button class="py-3 text-start hover:bg-gray-100" @click="router.push('/settings/allProducts')">
-          wszystkie produkty
+          Wszystkie produkty
+        </button>
+        <button class="py-3 text-start hover:bg-gray-100" @click="router.push('/settings/newProduct')">
+          Dodaj nowy produkt
         </button>
         <button class="py-3 text-start hover:bg-gray-100" @click="router.push('/settings/newSide')">
           Stwórz nową podstronę

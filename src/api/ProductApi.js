@@ -8,10 +8,18 @@ const GetProduct = (product_id) => {
         params: {product_id}
     }).then(res => res.data)
 }
+const AddProduct = (name, price, supply, description) => {
+    return api.post('/product/', {
+        name,
+        price,
+        supply,
+        description
+    }).then(res => res.data)
+}
 const AddImage = (image, product_id) => {
     let formData = new FormData
     formData.append('image', image)
-    formData.append('product_id',product_id)
+    formData.append('product_id', product_id)
     formData.append('_method', 'PUT');
     return api.post('/product/image', formData).then(res => res.data)
 }
@@ -49,13 +57,14 @@ const ChangeDescription = (description, product_id) => {
         description, product_id
     }).then(res => res.data)
 }
-const ChangeSupply = (supply,product_id) => {
-  return api.put('/product/supply',{
-      supply,product_id
-  }).then(res => res.data)
+const ChangeSupply = (supply, product_id) => {
+    return api.put('/product/supply', {
+        supply, product_id
+    }).then(res => res.data)
 }
 
 const ProductApi = {
+    AddProduct,
     ChangeSupply,
     ChangeName,
     ChangePrice,

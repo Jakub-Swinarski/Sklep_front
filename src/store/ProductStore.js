@@ -8,6 +8,11 @@ const GetAllProducts = () => {
 const GetProduct = (id) => {
     return ProductApi.GetProduct(id)
 }
+const AddProduct = (name, price, supply, description) => {
+    return ProductApi.AddProduct(name, price, supply, description).then((res)=>{
+        ProductId.value = res.id
+    })
+}
 const AddImage = (image, productId) => {
     return ProductApi.AddImage(image, productId)
 }
@@ -29,10 +34,11 @@ const AddCategory = (name, id) => {
 const ChangeDescription = (desc, id) => {
     return ProductApi.ChangeDescription(desc, id)
 }
-const ChangeSupply = (supply,id) => {
-  return ProductApi.ChangeSupply(supply,id)
+const ChangeSupply = (supply, id) => {
+    return ProductApi.ChangeSupply(supply, id)
 }
 const ProductStore = {
+    AddProduct,
     ChangeSupply,
     ChangeName,
     ChangePrice,
