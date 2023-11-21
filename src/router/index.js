@@ -19,6 +19,8 @@ import CreateNewUser from "@/components/admin/CreateNewUser.vue";
 import CreateNewAdmin from "@/components/admin/CreateNewAdmin.vue";
 import EditOrder from "@/components/admin/EditOrder.vue";
 import CreateNewProduct from "@/components/admin/createNewProduct.vue";
+import Order from "@/components/Order.vue";
+import Product from "@/components/Product.vue";
 
 
 const router = createRouter({
@@ -82,6 +84,14 @@ const router = createRouter({
                     component: CreateNewProduct
                 }
             ]
+        },
+        {
+            path: '/o/:id',
+            component: Order
+        },
+        {
+            path: '/p/:id',
+            component:Product
         },
         {
             path: '/',

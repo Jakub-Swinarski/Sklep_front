@@ -129,8 +129,6 @@ const baseApiUrl = import.meta.env.VITE_APP_BASE_API_URL;
 </script>
 
 <template>
-
-
   <div>
     <div class="flex justify-self-center justify-center items-center self-center max-h-screen" v-if="isLoading">
       <img alt="loading..." src="../../assets/loader.gif">
@@ -249,10 +247,7 @@ const baseApiUrl = import.meta.env.VITE_APP_BASE_API_URL;
         <button class="text-start bg-blue-500 px-4 py-2 rounded-full" @click="setOldDesc">Anuluj</button>
       </div>
     </div>
-
   </div>
-
-
 </template>
 
 <style scoped>

@@ -1,23 +1,24 @@
 <script setup>
+import {useRoute, useRouter} from "vue-router";
 import OrderStore from "@/store/OrderStore";
-import {useRoute} from "vue-router";
-import {callWithAsyncErrorHandling, ref} from "vue";
+import {ref} from "vue";
 
 const route = useRoute()
+const router = useRouter()
 const orderId = atob(route.params.id)
 const order = ref()
-const alertMessage = ref()
 const date = ref()
+const alertMessage = ref()
 const cartPrice = ref(0)
 const product = ref()
 const price = ref(0)
 const baseApiUrl = import.meta.env.VITE_APP_BASE_API_URL
-OrderStore.GetOrder(orderId).then((res) => {
+OrderStore.GetOrder(orderId).then((res)=>{
   order.value = res
   date.value = new Date(order.value.created_at)
   setCartPrice()
   setWholePrice()
-}).catch((e) => {
+}).catch((e)=>{
   alertMessage.value = e
 })
 const setCartPrice = () => {
@@ -29,7 +30,9 @@ const setWholePrice = () => {
   price.value = cartPrice.value + order.value.type_of_delivery.price
   if (order.pay_type === 'cash') price.value += 5
 }
-
+const toProduct = (id) =>{
+  router.push('/p/'+btoa(id))
+}
 </script>
 
 <template>
@@ -63,7 +66,7 @@ const setWholePrice = () => {
     </div>
     <p class="border-b-2">Zamówienie</p>
     <div class=" border-b-2 flex flex-row gap-4 justify-between items-center w-full" v-for="product of order.products">
-      <div class="flex flex-row items-center gap-4">
+      <div class="flex flex-row items-center gap-4" @click="toProduct(product.id)">
         <img :src="`${baseApiUrl}/storage/${product.image}`" height="100" width="100" alt="zdięcie">
         <p>{{ product.name }}</p>
       </div>
