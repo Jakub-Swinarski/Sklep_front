@@ -16,7 +16,7 @@ OrderStore.GetUserOrders(AuthStore.userId.value).then((res) => {
 }).catch((e) => {
   isLoading.value = false
   notLoaded.value = true
-  alertMessage.value = e
+  alertMessage.value = e.response.data.message
 })
 const toOrder = (id) =>{
   router.push('/o/'+btoa(id))
