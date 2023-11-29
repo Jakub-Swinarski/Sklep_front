@@ -34,9 +34,9 @@ const edit = (id, h, d, r) => {
 }
 const accept = (id) => {
   isError.value = false
-  RatingStore.editRatings(id, heading.value, description.value, ratingValue.value).then(()=>{
-        isVisible.value = undefined
-  }).catch((error)=>{
+  RatingStore.editRatings(id, heading.value, description.value, ratingValue.value).then(() => {
+    isVisible.value = undefined
+  }).catch((error) => {
     alertMessage.value = error.response.data.message
     isError.value = id
   })
@@ -104,7 +104,8 @@ const cancel = () => {
           <p>{{ getDate(rating.created_at) }}</p>
           <p v-if="rating.created_at !== rating.updated_at" class="text-gray-400">Edytowano dnia
             {{ getDate(rating.updated_at) }}</p>
-          <textarea v-model="description" class="w-full bg-gray-300 p-6 rounded-2xl" v-if="isVisible === rating.id"></textarea>
+          <textarea v-model="description" class="w-full bg-gray-300 p-6 rounded-2xl"
+                    v-if="isVisible === rating.id"></textarea>
           <p v-if="isVisible !== rating.id">{{ rating.description }}</p>
           <div class="flex items-center justify-center" v-if="isVisible !== rating.id">
             <button class=" bg-blue-500 px-4 py-2 rounded-full"

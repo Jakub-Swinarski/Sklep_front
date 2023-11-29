@@ -76,7 +76,7 @@ const changePassword = () => {
       {{ alertMessage }}</p>
   </div>
   <div
-      class="container gap-6 flex flex-col justify-self-center self-center justify-center items-center  text-2xl py-8 min-h-screen"
+      class="container gap-6 flex flex-col justify-self-center self-center justify-center items-center  text-2xl py-8 pt-40"
       v-if="!isLoading && !notLoaded">
     <p>Nazwa użytkownika</p>
     <div class="gap-6 flex">
