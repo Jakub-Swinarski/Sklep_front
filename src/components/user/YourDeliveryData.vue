@@ -21,6 +21,7 @@ const maskZipcode = reactive({})
 const number = ref()
 const maskTelNumber = reactive({})
 const router = useRouter()
+const isSomething = ref(false)
 
 DeliveryStore.getUserDeliveryData(AuthStore.userId.value).then((res) => {
   isLoading.value = false
@@ -92,6 +93,7 @@ const getZipcode=(z)=>{
   </div>
   <div class="grid-cols-2 gap-4 grid pt-4" v-if="!notLoaded && !isLoading">
     <div class="border-2 rounded-2xl flex-col flex gap-4 text-xl text-center" v-for="delivery of deliveryData">
+      <p class="hidden">{{isSomething = true}}</p>
       <div>
         <p>Imię i nazwisko:</p>
         <p v-if="isEdit !== delivery.id">{{ delivery.name }} {{ delivery.surname }}</p>
@@ -149,8 +151,8 @@ const getZipcode=(z)=>{
       </div>
     </div>
   </div>
-  <div class="text-center text-3xl flex-col flex gap-6" v-if="deliveryData[0] == null">
-    Nie masz żadnych danych
+  <div class="text-center text-3xl" v-if="!isSomething && !notLoaded && !isLoading">
+    <p>Nie ma żadnych opinij</p>
   </div>
   <div class="w-full justify-center flex mt-6">
     <button class="bg-blue-500 px-4 py-2 rounded-full text-3xl " @click="router.push('dataToOrders/new')">Dodaj dane</button>

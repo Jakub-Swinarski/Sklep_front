@@ -10,6 +10,8 @@ const alertMessage = ref()
 const isLoading = ref(true)
 const notLoaded = ref(false)
 const router = useRouter()
+const isSomething = ref(false)
+
 OrderStore.GetUserOrders(AuthStore.userId.value).then((res) => {
   orders.value = res
   isLoading.value = false
@@ -39,6 +41,7 @@ const getDate = (timestamp) => {
   </div>
   <div v-if="!notLoaded && !isLoading">
     <div class=" mt-6 flex-col" v-for="order of orders">
+      <p class="hidden">{{isSomething = true}}</p>
       <div class=" rounded-xl w-full border-2 border-gray-200 flex flex-row" @click="toOrder(order.id)">
         <div class="bg-gray-200 p-6 rounded-l-xl w-1/3">
           <p>Zamówienie numer: {{order.id}}</p>
@@ -57,6 +60,9 @@ const getDate = (timestamp) => {
         </div>
       </div>
     </div>
+  </div>
+  <div class="text-center text-3xl" v-if="!isSomething && !notLoaded && !isLoading">
+    <p>Nie ma żadnych opinij</p>
   </div>
 
 </template>

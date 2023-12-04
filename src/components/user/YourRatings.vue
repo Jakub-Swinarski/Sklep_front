@@ -13,6 +13,7 @@ const description = ref()
 const isVisible = ref(false)
 const ratingValue = ref()
 const isError = ref()
+const isSomething = ref(false)
 
 RatingStore.getUserRatings(AuthStore.userId.value).then((res) => {
   isLoading.value = false
@@ -54,12 +55,13 @@ const cancel = () => {
   <div class="flex justify-self-center justify-center items-center self-center max-h-screen" v-if="isLoading">
     <img alt="loading..." src="../../assets/loader.gif">
   </div>
-  <div v-if="notLoaded === true">
+  <div v-if="notLoaded">
     <p class="m-6 text-center text-5xl text-red-700 bg-red-200 px-8 py-4 rounded-xl border-2 border-red-700">
       {{ alertMessage }}</p>
   </div>
   <div v-if="!notLoaded && !isLoading">
     <div class="bg-gray-200 p-6 rounded-3xl" v-for="rating of ratings">
+      <p class="hidden">{{ isSomething = true}}</p>
       <p class="text-3xl">{{ rating.product.name }}</p>
       <div class="flex-row flex text-xl">
         <img class="w-1/3" :src="`${baseApiUrl}/storage/${rating.product.image.image}`" alt="zdjęcie">
@@ -120,9 +122,10 @@ const cancel = () => {
       </div>
     </div>
   </div>
-  <div v-if="ratings[0] == null ">
-    <p class="text-center text-3xl">Nie pisałeś żadnych opinij</p>
+  <div class="text-center text-3xl" v-if="!isSomething && !notLoaded && !isLoading">
+    <p>Nie ma żadnych opinij</p>
   </div>
+
 </template>
 
 <style scoped>

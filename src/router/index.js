@@ -23,6 +23,7 @@ import Order from "@/components/Order.vue";
 import Product from "@/components/Product.vue";
 import Test from "@/test.vue";
 import NewDeliveryData from "@/components/user/NewDeliveryData.vue";
+import Logout from "@/components/auth/logout.vue";
 
 
 const router = createRouter({
@@ -66,6 +67,8 @@ const router = createRouter({
             path: '/', component: Start
         }, {
             path: '/login', component: Login
+        }, {
+            path:'/logout', component: Logout
         }, {
             path: '/register', component: Register
         }, {
