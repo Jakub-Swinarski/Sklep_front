@@ -1,6 +1,5 @@
 <script setup>
 import UserStore from "@/store/UserStore";
-import AuthStore from "@/store/AuthStore";
 import {ref} from "vue";
 
 const isLoading = ref(true)

@@ -37,7 +37,7 @@ const click = (id)=>{
     <div class="flex flex-col gap-4 bg-gray-100 p-2 rounded-2xl text-xl" v-for="product in products">
       <div class="self-center">
         <img class="rounded-2xl" v-if="product.first_image !== null" :src="product.first_image.image" alt="img" height="100" width="100">
-        <img class="rounded-2xl" v-else src="@/assets/no%20image.webp" width="100" height="100">
+        <img class="rounded-2xl" v-else src="@/assets/no_image.webp" width="100" height="100">
       </div>
       <div class="flex flex-col gap-2">
         <p>Id: {{product.id}}</p>

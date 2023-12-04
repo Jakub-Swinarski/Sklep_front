@@ -1,6 +1,6 @@
 <script setup>
 import {useRoute, useRouter} from "vue-router";
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 import ProductStore from "@/store/ProductStore";
 
 const route = useRoute()
@@ -172,16 +172,16 @@ const baseApiUrl = import.meta.env.VITE_APP_BASE_API_URL;
           </div>
 
           <div class="flex items-center flex-row">
-            <img class="max-h-6" v-if="product.avgRating <= 0.5" src="@/assets/stars%200_5.png" alt="0/5">
-            <img class="max-h-6" v-if="0.5 < product.avgRating && product.avgRating <= 1.5" src="@/assets/stars%201_5.png"
+            <img class="max-h-6" v-if="product.avgRating <= 0.5" src="@/assets/stars_0_5.png" alt="0/5">
+            <img class="max-h-6" v-if="0.5 < product.avgRating && product.avgRating <= 1.5" src="@/assets/stars_1_5.png"
                  alt="1/5">
-            <img class="max-h-6" v-if="1.5 < product.avgRating && product.avgRating <= 2.5" src="@/assets/stars%202_5.png"
+            <img class="max-h-6" v-if="1.5 < product.avgRating && product.avgRating <= 2.5" src="@/assets/stars_2_5.png"
                  alt="2/5">
-            <img class="max-h-6" v-if="2.5 < product.avgRating && product.avgRating <= 3.5" src="@/assets/stars%203_5.png"
+            <img class="max-h-6" v-if="2.5 < product.avgRating && product.avgRating <= 3.5" src="@/assets/stars_3_5.png"
                  alt="3/5">
-            <img class="max-h-6" v-if="3.5 < product.avgRating && product.avgRating <= 5.5" src="@/assets/stars%204_5.png"
+            <img class="max-h-6" v-if="3.5 < product.avgRating && product.avgRating <= 5.5" src="@/assets/stars_4_5.png"
                  alt="4/5">
-            <img class="max-h-6" v-if="4.5 < product.avgRating" src="@/assets/stars%205_5.png" alt="5/5">
+            <img class="max-h-6" v-if="4.5 < product.avgRating" src="@/assets/stars_5_5.png" alt="5/5">
             <p class=" flex pl-2 text-xl max-h-8 text-gray-500 ">({{ product.countRatings }})</p>
           </div>
           <div class="flex-row flex gap-2">

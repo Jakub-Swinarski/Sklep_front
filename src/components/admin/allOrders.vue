@@ -1,6 +1,5 @@
 <script setup>
 import {ref} from "vue";
-import ProductStore from "@/store/ProductStore";
 import OrderStore from "@/store/OrderStore";
 import { useRouter} from "vue-router";
 
@@ -48,10 +47,6 @@ const click = (id) => {
     <div class="flex flex-row gap-4">
       <button class="bg-blue-500 px-4 py-2 rounded-full" @click="click(order.id)">Więcej i Edycja</button>
     </div>
-    <div>
-
-    </div>
-
   </div>
   </div>
 </template>

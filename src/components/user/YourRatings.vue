@@ -73,26 +73,26 @@ const cancel = () => {
           <p class="font-bold text-2xl" v-if="isVisible !== rating.id">{{ rating.heading }}</p>
           <input v-model="heading" v-if="isVisible === rating.id" class="bg-gray-300 w-full p-4 rounded-2xl">
           <div v-if="isVisible === false" class="flex flex-row text-xl gap-2 items-center">
-            <img class="max-h-6" v-if="rating.rating <= 0.5" src="@/assets/stars%200_5.png" alt="0/5">
-            <img class="max-h-6" v-if="0.5 < rating.rating && rating.rating <= 1.5" src="@/assets/stars%201_5.png"
+            <img class="max-h-6" v-if="rating.rating <= 0.5" src="@/assets/stars_0_5.png" alt="0/5">
+            <img class="max-h-6" v-if="0.5 < rating.rating && rating.rating <= 1.5" src="@/assets/stars_1_5.png"
                  alt="1/5">
-            <img class="max-h-6" v-if="1.5 < rating.rating && rating.rating <= 2.5" src="@/assets/stars%202_5.png"
+            <img class="max-h-6" v-if="1.5 < rating.rating && rating.rating <= 2.5" src="@/assets/stars_2_5.png"
                  alt="2/5">
-            <img class="max-h-6" v-if="2.5 < rating.rating && rating.rating <= 3.5" src="@/assets/stars%203_5.png"
+            <img class="max-h-6" v-if="2.5 < rating.rating && rating.rating <= 3.5" src="@/assets/stars_3_5.png"
                  alt="3/5">
-            <img class="max-h-6" v-if="3.5 < rating.rating && rating.rating <= 4.5" src="@/assets/stars%204_5.png"
+            <img class="max-h-6" v-if="3.5 < rating.rating && rating.rating <= 4.5" src="@/assets/stars_4_5.png"
                  alt="4/5">
-            <img class="max-h-6" v-if="4.5 < rating.rating" src="@/assets/stars%205_5.png" alt="5/5">
+            <img class="max-h-6" v-if="4.5 < rating.rating" src="@/assets/stars_5_5.png" alt="5/5">
             <p>({{ rating.rating }})</p>
           </div>
           <div v-if="isVisible === rating.id" class="flex flex-col">
             <div class="flex flex-row text-xl gap-2 items-center ml-3.5">
-              <img class="max-h-6" v-if="ratingValue === 0" src="@/assets/stars%200_5.png" alt="0/5">
-              <img class="max-h-6" v-if="ratingValue === 1" src="@/assets/stars%201_5.png" alt="1/5">
-              <img class="max-h-6" v-if="ratingValue === 2" src="@/assets/stars%202_5.png" alt="2/5">
-              <img class="max-h-6" v-if="ratingValue === 3" src="@/assets/stars%203_5.png" alt="3/5">
-              <img class="max-h-6" v-if="ratingValue === 4" src="@/assets/stars%204_5.png" alt="4/5">
-              <img class="max-h-6" v-if="ratingValue === 5" src="@/assets/stars%205_5.png" alt="5/5">
+              <img class="max-h-6" v-if="ratingValue === 0" src="@/assets/stars_0_5.png" alt="0/5">
+              <img class="max-h-6" v-if="ratingValue === 1" src="@/assets/stars_1_5.png" alt="1/5">
+              <img class="max-h-6" v-if="ratingValue === 2" src="@/assets/stars_2_5.png" alt="2/5">
+              <img class="max-h-6" v-if="ratingValue === 3" src="@/assets/stars_3_5.png" alt="3/5">
+              <img class="max-h-6" v-if="ratingValue === 4" src="@/assets/stars_4_5.png" alt="4/5">
+              <img class="max-h-6" v-if="ratingValue === 5" src="@/assets/stars_5_5.png" alt="5/5">
             </div>
             <div class="flex flex-row gap-3">
               <p @click="ratingValue = 0">0</p>

@@ -34,22 +34,22 @@ const redirect =(id)=>{
     <div class="flex flex-row bg-gray-100 p-6 rounded-3xl h-30 min-h-full gap-6" @click="redirect(product.id)"  v-for="product of products">
       <div>
         <img v-if="product.first_image != null" :src="`${baseApiUrl}/${product.first_image.image}`" alt="img">
-        <img v-else src="@/assets/no%20image.webp" width="100">
+        <img v-else src="@/assets/no_image.webp" width="100">
       </div>
       <div class="flex flex-col">
         <p>{{product.name}}</p>
         <p>{{product.price}} zł</p>
         <div class="flex items-center flex-row">
-          <img class="max-h-6" v-if="product.avgRating <= 0.5" src="@/assets/stars%200_5.png" alt="0/5">
-          <img class="max-h-6" v-if="0.5 < product.avgRating && product.avgRating <= 1.5" src="@/assets/stars%201_5.png"
+          <img class="max-h-6" v-if="product.avgRating <= 0.5" src="@/assets/stars_0_5.png" alt="0/5">
+          <img class="max-h-6" v-if="0.5 < product.avgRating && product.avgRating <= 1.5" src="@/assets/stars_1_5.png"
                alt="1/5">
-          <img class="max-h-6" v-if="1.5 < product.avgRating && product.avgRating <= 2.5" src="@/assets/stars%202_5.png"
+          <img class="max-h-6" v-if="1.5 < product.avgRating && product.avgRating <= 2.5" src="@/assets/stars_2_5.png"
                alt="2/5">
-          <img class="max-h-6" v-if="2.5 < product.avgRating && product.avgRating <= 3.5" src="@/assets/stars%203_5.png"
+          <img class="max-h-6" v-if="2.5 < product.avgRating && product.avgRating <= 3.5" src="@/assets/stars_3_5.png"
                alt="3/5">
-          <img class="max-h-6" v-if="3.5 < product.avgRating && product.avgRating <= 5.5" src="@/assets/stars%204_5.png"
+          <img class="max-h-6" v-if="3.5 < product.avgRating && product.avgRating <= 5.5" src="@/assets/stars_4_5.png"
                alt="4/5">
-          <img class="max-h-6" v-if="4.5 < product.avgRating" src="@/assets/stars%205_5.png" alt="5/5">
+          <img class="max-h-6" v-if="4.5 < product.avgRating" src="@/assets/stars_5_5.png" alt="5/5">
           <p class=" flex pl-2 text-xl max-h-8 text-gray-500 ">({{ product.countRatings }})</p>
         </div>
       </div>

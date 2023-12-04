@@ -1,7 +1,7 @@
 <script setup>
 import OrderStore from "@/store/OrderStore";
 import {useRoute} from "vue-router";
-import {callWithAsyncErrorHandling, ref} from "vue";
+import {ref} from "vue";
 
 const route = useRoute()
 const orderId = atob(route.params.id)
@@ -88,7 +88,7 @@ const setWholePrice = () => {
       </div>
       <div class="flex flex-row justify-between">
         <p>Razem:</p>
-        <p>{{price}} zł</p>
+        <p>{{ price }} zł</p>
       </div>
     </div>
   </div>

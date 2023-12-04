@@ -8,6 +8,7 @@ const deliveryData = ref()
 DeliveryStore.getUserDeliveryData(AuthStore.userId.value).then((res)=>{
   deliveryData.value = res.map((elem)=>{
     elem.zipcode = elem.zipcode.toString().padStart(5,'0')
+    let temp = elem.zipcode[0]
     return elem
   })
 
@@ -38,6 +39,7 @@ DeliveryStore.getUserDeliveryData(AuthStore.userId.value).then((res)=>{
         <p>{{data.name}}</p>
         <p>{{data.surname}}</p>
         <p>{{data.address}}</p>
+        <p>{{data.zipcode}}</p>
 
       </div>
     </div>
