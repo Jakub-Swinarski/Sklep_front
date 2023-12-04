@@ -21,7 +21,7 @@ rawProductData.forEach((val)=>{
 </script>
 
 <template>
-  <div class=" bg-blue-400 rounded-xl flex flex-col py-10 px-8 ">
+  <div class=" bg-gray-100 rounded-xl flex flex-col py-10 px-8 ">
     <p class="text-center text-3xl">Koszyk</p>
 
     <div class="flex flex-row border-b-2" v-for="product of products">

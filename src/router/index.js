@@ -24,6 +24,8 @@ import Product from "@/components/Product.vue";
 import Test from "@/test.vue";
 import NewDeliveryData from "@/components/user/NewDeliveryData.vue";
 import Logout from "@/components/auth/logout.vue";
+import Cart from "@/components/Cart.vue";
+import NewOrder from "@/components/NewOrder.vue";
 
 
 const router = createRouter({
@@ -69,6 +71,10 @@ const router = createRouter({
             path: '/login', component: Login
         }, {
             path:'/logout', component: Logout
+        },{
+            path:'/cart', component: Cart
+        },{
+            path:'/order', component: NewOrder
         }, {
             path: '/register', component: Register
         }, {
