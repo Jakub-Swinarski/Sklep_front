@@ -51,18 +51,16 @@ const getDate = (timestamp) => {
         <div class="flex flex-row w-full p-2 items-center">
           <div v-if="order.productCount <= 1" v-for="product of order.products">
             <img :src="`${baseApiUrl}/storage/${product}`" >
-            <p>{{product}}</p>
           </div>
           <div class="pr-6" v-else v-for="product of order.products">
-            <img :src="`${baseApiUrl}/storage/${product}`" alt="img" width="100" height="100">
-            <p>{{product.image }}</p>
+            <img :src="`${baseApiUrl}/storage/${product}`" alt="img">
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="text-center text-3xl" v-if="!isSomething && !notLoaded && !isLoading">
-    <p>Nie ma żadnych opinij</p>
+    <p>Nie masz żadnych zamówień</p>
   </div>
 
 </template>

@@ -33,13 +33,15 @@ AuthStore.fetchUser().then(() => {
       </div>
       <div class="flex flex-row gap-6" v-else-if="!isLoading && logged">
         <div @mouseover="smallCart = true" @mouseout="smallCart = false" @click="router.push('/cart')">
-
-          <img src="@/assets/cart.webp" alt="Koszyk" width="50" >
+          <img src="@/assets/cart.webp" alt="Koszyk" width="50">
         </div>
         <img src="@/assets/gear.webp" alt="Ustawienia" width="50" @click="router.push('/settings')">
         <img src="@/assets/logout.webp" alt="Wyloguj" width="50" @click="router.push('/logout')">
       </div>
       <div v-else class="flex-row flex gap-6">
+        <div @mouseover="smallCart = true" @mouseout="smallCart = false" @click="router.push('/cart')">
+          <img src="@/assets/cart.webp" alt="Koszyk" width="50">
+        </div>
         <button class="bg-blue-500 px-4 py-2 rounded-full text-xl " @click="router.push('/login')">Zaloguj</button>
         <button class="bg-blue-500 px-4 py-2 rounded-full text-xl " @click="router.push('/register')">Zarejestruj
         </button>
@@ -49,7 +51,6 @@ AuthStore.fetchUser().then(() => {
     <div v-if="smallCart" class="absolute top-16 right-40">
       <small-cart></small-cart>
     </div>
-
   </div>
 
 </template>

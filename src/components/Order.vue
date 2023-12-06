@@ -23,7 +23,7 @@ OrderStore.GetOrder(orderId).then((res)=>{
 })
 const setCartPrice = () => {
   for (product.value of order.value.products) {
-    cartPrice.value += parseFloat(product.value.price)
+    cartPrice.value += parseFloat(product.value.price) * parseFloat(product.value.pivot.how_many)
   }
 }
 const setWholePrice = () => {
@@ -36,7 +36,7 @@ const toProduct = (id) =>{
 </script>
 
 <template>
-  <div class="container text-3xl justify-self-center gap-4 flex flex-col mt-4">
+  <div class="container text-3xl mx-auto gap-4 max-w-5xl flex flex-col mt-4">
     <div>
       <p>Zamówienie numer: {{ order.id }}</p>
       <p class="text-xl text-gray-500">Z dnia {{ date.toDateString() }}</p>
@@ -71,7 +71,7 @@ const toProduct = (id) =>{
         <p>{{ product.name }}</p>
       </div>
       <div class="flex flex-row items-center gap-4">
-        <p class="text-xl text-gray-500">x szt.</p>
+        <p class="text-xl text-gray-500">{{product.pivot.how_many}} szt.</p>
         <p>{{ product.price }} zł</p>
       </div>
     </div>
