@@ -1,14 +1,6 @@
 <script setup>
 import {ref} from "vue";
-import AllUsers from "@/components/admin/allUsers.vue";
-import AllOrders from "@/components/admin/allOrders.vue";
-import AllProducts from "@/components/admin/allProducts.vue";
 import AuthStore from "../store/AuthStore";
-import CreateNewSide from "@/components/admin/CreateNewSide.vue";
-import AccountSettings from "@/components/user/AccountSettings.vue";
-import YourOrders from "@/components/user/YourOrders.vue";
-import YourRatings from "@/components/user/YourRatings.vue";
-import YourDeliveryData from "@/components/user/YourDeliveryData.vue";
 import {useRoute, useRouter} from "vue-router";
 const isLoading = ref(true)
 const alertMessage = ref()
@@ -69,7 +61,7 @@ AuthStore.fetchUser().then((res) => {
         <button class="py-3 text-start hover:bg-gray-100" @click="router.push('/settings/newProduct')">
           Dodaj nowy produkt
         </button>
-        <button class="py-3 text-start hover:bg-gray-100" @click="router.push('/settings/newSide')">
+        <button class="py-3 text-start hover:bg-gray-100" @click="router.push('/settings/NewSide')">
           Stwórz nową podstronę
         </button>
         <button class="py-3 text-start hover:bg-gray-100" @click="router.push('/settings/createNewUser')">

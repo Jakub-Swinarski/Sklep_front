@@ -39,7 +39,7 @@ const click = (id) => {
     <p>Sposób dostawy: {{order.type_of_delivery.name}}</p>
     <p>Sposób zapłaty: {{order.pay_type}}</p>
     <p>Numer faktury: {{order.invoice_number}}</p>
-    <p>E-mail: {{order.user.email}}</p>
+    <p v-if="order.user !== null">E-mail: {{order.user.email}}</p>
     <p>Adres zamieszkania: {{order.address.address}}</p>
     <p>kod pocztowy i miasto: {{order.address.zipcode}} {{order.address.city}}</p>
     <p>Numer tel: +48 {{order.address.number}}</p>

@@ -2,6 +2,7 @@
 import {ref} from "vue";
 import ProductStore from "@/store/ProductStore";
 import {useRoute} from "vue-router";
+import LikeApi from "@/api/LikeApi";
 
 const route = useRoute()
 const productId = atob(route.params.id)
@@ -11,10 +12,17 @@ const alertMessage = ref()
 const product = ref()
 const witchImage = ref(0)
 const howMuch = ref(1)
+const isBought = ref(false)
+const isLiked = ref(false)
 const baseApiUrl = import.meta.env.VITE_APP_BASE_API_URL
 ProductStore.GetProduct(productId).then((res) => {
   product.value = res
   isLoading.value = false
+  LikeApi.getProductLikes(product.value.id).then((res)=>{
+ if (res !== null){
+   isLiked.value = true
+ }
+  })
 }).catch((e) => {
   notLoaded.value = true
   isLoading.value = false
@@ -32,6 +40,7 @@ const getSupply = (supply) => {
   }
 }
 const addToCart = () => {
+  isBought.value = true
   const products = ref([])
 
   const temp = localStorage.getItem('cart')
@@ -101,7 +110,9 @@ const addToCart = () => {
             </div>
           </div>
           <div>
+            <p v-if="isBought"> Produkt dodano do koszyka</p>
             <div v-if="product.supply > 0" class="flex flex-row gap-4 items-center">
+              <p v-if="isBought">Produkt znajduje się w koszyku</p>
               <button  class="bg-blue-500 px-4 py-2 rounded-full" @click="addToCart">Kup</button>
               <p>Ile:</p>
               <input type="number" v-model="howMuch">

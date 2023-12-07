@@ -36,7 +36,7 @@ rawProductData.forEach((val)=>{
 
     </div>
     <div>
-      <p>Cez za wszystko: {{finalPrice}}</p>
+      <p>Cena za wszystko: {{finalPrice}}</p>
     </div>
 
   </div>

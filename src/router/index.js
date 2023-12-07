@@ -14,7 +14,6 @@ import YourDeliveryData from "@/components/user/YourDeliveryData.vue";
 import AllUsers from "@/components/admin/allUsers.vue";
 import AllOrders from "@/components/admin/allOrders.vue";
 import AllProducts from "@/components/admin/allProducts.vue";
-import CreateNewSide from "@/components/admin/CreateNewSide.vue";
 import CreateNewUser from "@/components/admin/CreateNewUser.vue";
 import CreateNewAdmin from "@/components/admin/CreateNewAdmin.vue";
 import EditOrder from "@/components/admin/EditOrder.vue";
@@ -27,6 +26,7 @@ import Logout from "@/components/auth/logout.vue";
 import Cart from "@/components/Cart.vue";
 import NewOrder from "@/components/NewOrder.vue";
 import Accept from "@/components/Accept.vue";
+import PageCreator from "@/components/admin/PageCreator.vue";
 
 
 const router = createRouter({
@@ -52,7 +52,7 @@ const router = createRouter({
             }, {
                 path: 'allProducts', component: AllProducts
             }, {
-                path: 'NewSide', component: CreateNewSide
+                path: 'NewSide', component: PageCreator
             }, {
                 path: 'createNewUser', component: CreateNewUser
             }, {
