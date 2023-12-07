@@ -1,6 +1,6 @@
 <script setup>
 
-import {reactive, ref} from "vue";
+import {reactive, ref, watch} from "vue";
 import DeliveryStore from "@/store/DeliveryStore";
 import AuthStore from "@/store/AuthStore";
 import {vMaska} from "maska"
@@ -22,7 +22,6 @@ const number = ref()
 const maskTelNumber = reactive({})
 const router = useRouter()
 const isSomething = ref(false)
-
 DeliveryStore.getUserDeliveryData(AuthStore.userId.value).then((res) => {
   isLoading.value = false
   deliveryData.value = res
@@ -72,6 +71,9 @@ const cancelEdit = () => {
 }
 const saveData = (deliveryId) => {
   DeliveryStore.editAddress(deliveryId, name.value, surname.value, address.value, city.value, maskZipcode.unmasked, maskTelNumber.unmasked).then(() => {
+    DeliveryStore.getUserDeliveryData(AuthStore.userId.value).then((res) => {
+      deliveryData.value = res
+    })
     isEdit.value = undefined
   })
 }
@@ -152,7 +154,7 @@ const getZipcode=(z)=>{
     </div>
   </div>
   <div class="text-center text-3xl" v-if="!isSomething && !notLoaded && !isLoading">
-    <p>Nie ma żadnych opinij</p>
+    <p>Nie ma żadnych danych</p>
   </div>
   <div class="w-full justify-center flex mt-6">
     <button class="bg-blue-500 px-4 py-2 rounded-full text-3xl " @click="router.push('dataToOrders/new')">Dodaj dane</button>

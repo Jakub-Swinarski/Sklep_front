@@ -112,7 +112,6 @@ const addToCart = () => {
           <div>
             <p v-if="isBought"> Produkt dodano do koszyka</p>
             <div v-if="product.supply > 0" class="flex flex-row gap-4 items-center">
-              <p v-if="isBought">Produkt znajduje się w koszyku</p>
               <button  class="bg-blue-500 px-4 py-2 rounded-full" @click="addToCart">Kup</button>
               <p>Ile:</p>
               <input type="number" v-model="howMuch">

@@ -2,7 +2,7 @@
 import {RouterView, useRouter} from 'vue-router'
 import "@/assets/main.css"
 import AuthStore from "@/store/AuthStore";
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import SmallCart from "@/components/SmallCart.vue";
 
 
@@ -10,12 +10,20 @@ const router = useRouter()
 const isLoading = ref(true)
 const logged = ref(false)
 const smallCart = ref(false)
+
 AuthStore.fetchUser().then(() => {
   isLoading.value = false
   logged.value = true
 }).catch(() => {
   isLoading.value = false
   logged.value = false
+})
+watch(AuthStore.userId,()=>{
+  AuthStore.fetchUser().then(() => {
+    logged.value = true
+  }).catch(() => {
+    logged.value = false
+  })
 })
 
 </script>
@@ -27,7 +35,6 @@ AuthStore.fetchUser().then(() => {
         <p class="text-2xl">Garniturex</p>
         <p class="text-xs">Sklep z garniturami</p>
       </div>
-      <input class="px-4 py-2 rounded-full" type="text" placeholder="Wyszukaj produkt">
       <div v-if="isLoading">
         <img src="@/assets/loader.gif" alt="loading" width="50">
       </div>
