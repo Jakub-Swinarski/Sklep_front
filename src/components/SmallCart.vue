@@ -26,7 +26,8 @@ rawProductData.forEach((val)=>{
 
     <div class="flex flex-row border-b-2" v-for="product of products">
       <div>
-        <img v-if="product.image.image" :src="`${baseApiUrl}/storage/${product.image.image}`" width="100">
+        <img v-if="product.image" :src="`${baseApiUrl}/storage/${product.image.image}`" width="100">
+        <img v-else src="@/assets/no_image.webp" alt="no image" width="100">
       </div>
       <div class="flex flex-col ">
         <p>{{product.name}}</p>
